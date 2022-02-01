@@ -125,8 +125,7 @@ function MovieList() {
 }
 
 function CategoryList() {
-  // Custom Hook we get from react router dom for nested routing
-  // const { url, path } = useRouteMatch();
+
   const { url, path } = useRouteMatch();
   console.log('url in CategoryList', url); // 💡 Use url for nested links
   console.log('path in CategoryList', path); // 💡 Use path for nested routes
@@ -138,8 +137,7 @@ function CategoryList() {
         {movieCategories.map(({ category, id }) => {
           return (
             <li key={id}>
-              {/* A nested link that's using the `url` from `useRouteMatch()`  */}
-              {/* <Link to={`${url}/${id}`}>{category}</Link> */}
+      
               <Link to={`${url}/${id}`}>{category}</Link>
             </li>
           );
@@ -148,8 +146,7 @@ function CategoryList() {
 
       <hr />
 
-      {/* The URL we want to match: /category/:categoryId */}
-      {/* <Route path={`${path}/:categoryId`}> */}
+  
       <Route path={`${path}/:categoryId`}>
         <MovieList />
       </Route>
