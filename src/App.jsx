@@ -89,13 +89,15 @@ function Movie() {
 }
 
 function MovieList() {
-  // const { categoryId } = useParams();
-  // const { url, path } = useRouteMatch();
+  const { categoryId } = useParams();
+  const { url, path } = useRouteMatch();
+ 
   console.log('url in MovieList', url); // 💡 Use url for nested links
   console.log('path in MovieList', path); // 💡 Use path for nested routes
 
-  // const category = movieCategories.find(({ id }) => id === categoryId);
-  // console.log('category', category);
+  const category = movieCategories.find(({ id }) => id === categoryId);
+  
+  console.log('category', category);
   return (
     <div>
       <h2>{category.category}</h2>
@@ -104,8 +106,9 @@ function MovieList() {
         {category.movies.map((movie) => {
           return (
             <li key={movie.id}>
-              {/* <Link to={`${url}/${movie.id}`}>{movie.title}</Link> */}
-              <Link>{movie.title}</Link>
+          
+           
+              <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
             </li>
           );
         })}
@@ -113,8 +116,8 @@ function MovieList() {
 
       <hr />
 
-      {/* <Route path={`${path}/:movieId`}> */}
-      <Route>
+    
+      <Route path={`${path}/:movieId`}>
         <Movie />
       </Route>
     </div>
